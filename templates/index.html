@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Credit worthiness predictor</title>
+        <styles></styles>
+    </head>
+    <body>
+        <form action='{{ url_for("predict_creditworthiness")}}' method="POST">
+            <label for="age">Person's age:</label><br>
+            <input type="number" id="age" name="age" value="26">
+            <br/>
+
+            <label for="income">Annual income:</label><br>
+            <input type="number" id="income" name="income" value="100000">
+            <br/>
+
+            <label for="homeownership">Home Ownership:</label><br>
+            <!-- <input list="homeownership" name="homeownership"> -->
+            <select id="homeownership">
+              <option value="OWN" selected>OWN</option>
+              <option value="RENT">RENT</option>
+              <option value="MORTGAGE">MORTGAGE</option>
+              <option value="OTHER">OTHER</option>
+            </select>
+            <br/>
+
+            <label for="emplength">Employment Length (years):</label><br>
+            <input type="number" id="emplength" name="emplength" value="5">
+            <br/>
+
+            <label for="credhistory">Credit History length (years):</label><br>
+            <input type="number" id="credhistory" name="credhistory" value="5">
+            <br/>
+
+            <label for="intrate">Interest Rate:</label><br>
+            <input type="number" id="intrate" name="intrate" min="0" max="20" step="0.01" value="8.5">
+            <br/>
+
+            <label for="loanamt">Loan Amount:</label><br>
+            <input type="number" id="loanamnt" name="loanamnt" min="1000" max="1000000" step="5000" value="150000">
+            <br/>
+
+            <label for="loangrade">Loan Grade:</label><br>
+            <select id="loangrade">
+              <option value="A" selected>A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+            </select>
+            <br/>
+
+            <label for="loanintent">Loan purpose:</label><br>
+            <select id="loanintent">
+              <option value="DEDTCONSOLIDATION" selected>Debt Consolidation</option>
+              <option value="HOMEIMPROVEMENT">Home Improvement</option>
+              <option value="EDUCATION">Education</option>
+              <option value="MEDICAL">Medical</option>
+              <option value="PERSONAL">Personal</option>
+              <option value="VENTURE">Venture</option>
+            </select>
+            <br/>
+            
+            <label for="defaulthist">Has history of default?</label><br>
+            <select id="defaulthist">
+              <option value="Y" selected>Yes</option>
+              <option value="N">No</option>
+            </select>
+            <br/>
+
+            <button type="submit">Submit</button>
+          </form>
+          <br/>
+          <br/>
+          {{ prediction_text }}
+    </body>
+
+</html>
