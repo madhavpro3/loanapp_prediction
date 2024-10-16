@@ -1,0 +1,9 @@
+loanapp_build/
+loanappenv/
+loanapp_eda.ipynb
+loanapp_ml.ipynb
+.gitignore
+.github/*
+streamlit_ui.py
+mlmodel_predict.py
+README.md
