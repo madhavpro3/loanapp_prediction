@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template
 import pickle
 import pandas as pd
-import numpy as np
 
 
 loanapp=Flask(__name__)
@@ -11,8 +10,8 @@ loanapp=Flask(__name__)
 # model=pickle.load(open(MODEL_PATH,"rb"))
 # coltrans=pickle.load(open(COLTRANSFORMER_PATH,"rb"))
 
-MODEL_PATH="outputs/loanapp_logreg.pkl"
-COLTRANSFORMER_PATH="outputs/loanapp_coltransformer.pkl"
+MODEL_PATH="model/loanapp_logreg.pkl"
+COLTRANSFORMER_PATH="model/loanapp_coltransformer.pkl"
 model=pickle.load(open(MODEL_PATH,"rb"))
 coltrans=pickle.load(open(COLTRANSFORMER_PATH,"rb"))
 
@@ -36,6 +35,7 @@ def model_predict(inp_dict):
 
 @loanapp.route("/")
 def Home():
+    # return "Hellow world"  
     return render_template("index.html")
 
 @loanapp.route("/predict_creditworthiness",methods=['GET','POST'])
@@ -60,4 +60,5 @@ def predict_creditworthiness():
     
 
 if __name__=="__main__":
-    loanapp.run(debug=True)
+    loanapp.run(host='0.0.0.0',port=5000,debug=False)
+    # loanapp.run(, port=5000)
